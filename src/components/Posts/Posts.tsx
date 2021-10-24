@@ -15,7 +15,7 @@ const Posts = (props: any) => {
 
     return <div className="Posts">
         {
-            posts.map((post: any, index: number) => <Post key={index} content={post}></Post>)
+            posts.map((post: any, index: number) => <Post key={index} post={post}></Post>)
         }
 
     </div>

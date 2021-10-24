@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 //import Counter from './components/Counter/Counter';
 import PostForm from './components/PostForm/PostForm';
@@ -6,14 +7,20 @@ import Posts from './components/Posts/Posts';
 
 const App = () => {
 
-   // useState will trigger render
-  const [posts,setPosts] = useState<string[]>([]);
+  // useState will trigger render
+  const [posts, setPosts] = useState<string[]>([]);
 
-  const onPostCreatedOutside = (newPost:any) => {
+  const onPostCreatedOutside = (newPost: any) => {
     //Get the existing array and add new Post
-    setPosts([...posts,newPost]);
+    setPosts([...posts, newPost]);
   }
-  
+
+  useEffect(() => {
+    axios.get<string[]>("https://agnibook.herokuapp.com/posts").then(response => {
+      setPosts(response.data);
+    })
+  }, [])
+
   return (
     <div className="App">
       <PostForm onPostCreated={onPostCreatedOutside}></PostForm>
