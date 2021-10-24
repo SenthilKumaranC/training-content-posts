@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 //import Counter from './components/Counter/Counter';
 import PostForm from './components/PostForm/PostForm';

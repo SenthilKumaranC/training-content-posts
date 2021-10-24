@@ -11,7 +11,7 @@ import './Posts.css'
 
 const Posts = (props: any) => {
 
-    const { posts, students } = props;
+    const { posts} = props;
 
     return <div className="Posts">
         {
