@@ -8,19 +8,9 @@ const Like = () => {
     const [buttonState, setButtonState] = useState<string>("unlike");
 
     const toggleButtonState = useCallback(() => {
-        //Toggling
         const newButtonState = buttonState === "unlike" ? "like" : "unlike";
-
-        //Handle Like Count
-        if (newButtonState === "like") {
-            setTotalLikes(totalLikes - 1);
-        } else {
-            setTotalLikes(totalLikes + 1);
-        }
-
-        //Set Button State
         setButtonState(newButtonState);
-        
+        newButtonState === "like" ? setTotalLikes(totalLikes - 1) : setTotalLikes(totalLikes + 1);
     }, [buttonState, totalLikes])
 
     return <>

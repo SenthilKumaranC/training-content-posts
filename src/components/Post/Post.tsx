@@ -1,15 +1,18 @@
 import React from 'react'
+import { IPost } from '../../App';
 import Like from '../Like/Like';
 import './Post.css'
 
-const Post = (props: any) => {
+export interface IPostProps extends IPost{
+    children:any
+}
 
-    console.log(props.content);
-
-    const { post: { content } } = props;
-
+const Post = (props: IPostProps) => {
+      
+    console.log(props);
+      
     return (<div className="Post">
-        {content}
+        
         <Like></Like>
     </div>)
 

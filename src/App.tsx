@@ -5,21 +5,28 @@ import './App.css';
 import PostForm from './components/PostForm/PostForm';
 import Posts from './components/Posts/Posts';
 
+export interface IPost {
+  id:string;
+  content: string;
+  createdAt: Date;
+  likes: number
+}
+
 const App = () => {
 
   // useState will trigger render
-  const [posts, setPosts] = useState<string[]>([]);
+  const [posts, setPosts] = useState<IPost[]>([]);
 
   const onPostCreatedOutside = (newPost: any) => {
     //Get the existing array and add new Post
     setPosts([...posts, newPost]);
   }
 
-  useEffect(() => {
+  /*useEffect(() => {
     axios.get<string[]>("https://agnibook.herokuapp.com/posts").then(response => {
       setPosts(response.data);
     })
-  }, [])
+  }, [])*/
 
   return (
     <div className="App">

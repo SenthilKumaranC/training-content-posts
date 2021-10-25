@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
+import { IPost } from '../../App';
 import './PostForm.css'
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 const PostForm = (props: any) => {
@@ -11,7 +12,12 @@ const PostForm = (props: any) => {
 
     if (textArea) {
       const postContent = textArea.value;
-      props.onPostCreated(postContent);
+
+      const newPost: IPost = {
+        id: uuidv4(), content: postContent, createdAt: new Date(), likes: 0
+      }
+
+      props.onPostCreated(newPost);
     }
 
   }

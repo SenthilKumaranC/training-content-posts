@@ -1,4 +1,5 @@
 import React from 'react'
+import { IPost } from '../../App';
 import Post from '../Post/Post'
 import './Posts.css'
 //Rule to loop through Array and convert to components - Command : Convert Array to UI
@@ -11,11 +12,15 @@ import './Posts.css'
 
 const Posts = (props: any) => {
 
-    const { posts} = props;
+    const { posts } = props;
 
     return <div className="Posts">
         {
-            posts.map((post: any, index: number) => <Post key={index} post={post}></Post>)
+            posts.map((post: IPost, index: number) => <Post key={index}
+                {...post}
+            >
+
+            </Post>)
         }
 
     </div>
